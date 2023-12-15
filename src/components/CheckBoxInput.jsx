@@ -1,10 +1,25 @@
-function CheckBoxInput() {
+import PropTypes from "prop-types"
+
+function CheckBoxInput({ checked, setChecked }) {
+  const handleChange = () => setChecked(!checked)
+
   return (
     <div>
       <label htmlFor="available">Show only Available </label>
-      <input type="checkbox" name="checkbox" id="" />
+      <input
+        onChange={handleChange}
+        type="checkbox"
+        name="checkbox"
+        id=""
+        checked={checked}
+      />
     </div>
   )
 }
 
 export default CheckBoxInput
+
+CheckBoxInput.propTypes = {
+  checked: PropTypes.bool,
+  setChecked: PropTypes.func,
+}

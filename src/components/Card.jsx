@@ -1,26 +1,32 @@
-import style from "../styles/Card.module.css"
+import PropTypes from "prop-types"
 
-function Card() {
+import style from "../styles/Card.module.css"
+import CardButton from "./CardButton"
+
+function Card({ description, title, image }) {
   return (
     <div className={style.card}>
       <div className={style["card-header"]}>
         <div
           className={style["card-img"]}
-          style="
-                background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwaG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
-              "
+          style={{
+            backgroundImage: `url('${image}')`,
+          }}
         ></div>
       </div>
       <div className={style["card-body"]}>
-        <h2 className={style["card-title"]}>Sample Card</h2>
-        <p className={style["card-description"]}>
-          This is just a sample card, take the structure of this card as an
-          example for the function createCard
-        </p>
-        <button className={style["card-button"]}>I want it!</button>
+        <h2 className={style["card-title"]}>{title}</h2>
+        <p className={style["card-description"]}>{description}</p>
+        <CardButton />
       </div>
     </div>
   )
 }
 
 export default Card
+
+Card.propTypes = {
+  description: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+}
