@@ -8,34 +8,36 @@ import style from "./styles/App.module.css"
 
 import houses from "./data/houseToRent"
 
-function App() {
-  const [checked, setChecked] = useState(false)
-  const [selectOption, setSelectOption] = useState("All")
-  const [searchText, setSearchText] = useState("")
+const initialFilter = {
+  checked: false,
+  selectOption: "All",
+  searchText: "",
+}
 
-  console.log(checked)
+function App() {
+  const [housesFilters, setHousesFilters] = useState(initialFilter)
+
+  console.log(housesFilters)
 
   return (
     <>
       <Header />
       <Filters
-        checked={checked}
-        setChecked={setChecked}
-        selectOption={selectOption}
-        setSelectOption={setSelectOption}
-        searchText={searchText}
-        setSearchText={setSearchText}
+        housesFilters={housesFilters}
+        setHousesFilters={setHousesFilters}
       />
       <div className={style.cards}>
         {houses
-          .filter((house) => (checked ? house.available : true))
+          .filter((house) => (housesFilters.checked ? house.available : true))
           .filter(
-            (house) => selectOption === "All" || house.type === selectOption
+            (house) =>
+              housesFilters.selectOption === "All" ||
+              house.type === housesFilters.selectOption
           )
           .filter((house) =>
             house.name
               .toLocaleLowerCase()
-              .includes(searchText.toLocaleLowerCase())
+              .includes(housesFilters.searchText.toLocaleLowerCase())
           )
           .map((house) => (
             <Card

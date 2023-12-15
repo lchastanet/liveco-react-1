@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 
-function TextInput({ searchText, setSearchText }) {
+function TextInput({ searchText, setHousesFilters }) {
   const handleChange = (e) => {
-    setSearchText(e.target.value)
+    setHousesFilters((prev) => ({ ...prev, searchText: e.target.value }))
   }
 
   return (
@@ -19,5 +19,5 @@ export default TextInput
 
 TextInput.propTypes = {
   searchText: PropTypes.string,
-  setSearchText: PropTypes.func,
+  setHousesFilters: PropTypes.func,
 }

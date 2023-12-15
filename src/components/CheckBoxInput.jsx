@@ -1,7 +1,8 @@
 import PropTypes from "prop-types"
 
-function CheckBoxInput({ checked, setChecked }) {
-  const handleChange = () => setChecked(!checked)
+function CheckBoxInput({ checked, setHousesFilters }) {
+  const handleChange = () =>
+    setHousesFilters((prev) => ({ ...prev, checked: !checked }))
 
   return (
     <div>
@@ -21,5 +22,5 @@ export default CheckBoxInput
 
 CheckBoxInput.propTypes = {
   checked: PropTypes.bool,
-  setChecked: PropTypes.func,
+  setHousesFilters: PropTypes.func,
 }

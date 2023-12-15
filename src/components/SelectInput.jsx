@@ -1,9 +1,8 @@
 import PropTypes from "prop-types"
 
-function SelectInput({ selectOption, setSelectOption }) {
+function SelectInput({ selectOption, setHousesFilters }) {
   const handleChange = (event) => {
-    setSelectOption(event.target.value)
-    console.log(event.target.value)
+    setHousesFilters((prev) => ({ ...prev, selectOption: event.target.value }))
   }
 
   return (
@@ -19,5 +18,5 @@ export default SelectInput
 
 SelectInput.propTypes = {
   selectOption: PropTypes.string,
-  setSelectOption: PropTypes.func,
+  setHousesFilters: PropTypes.func,
 }
