@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: roboto, sans-serif;
+}
+h1 {
+  padding: 0;
+  margin: 0;
+}
